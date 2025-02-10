@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=contaspagar'
+      - 'POSTGRES_USER=usuario'
+      - 'POSTGRES_PASSWORD=senha'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: 'openjdk:17'
+    container_name: contas-pagar-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/contaspagar
+      - SPRING_DATASOURCE_USERNAME=usuario
+      - SPRING_DATASOURCE_PASSWORD=senha
+      - SPRING_PROFILES_ACTIVE=dev
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+    entrypoint: ["sh", "-c", "until pg_isready -h postgres -p 5432; do echo waiting for postgres; sleep 2; done; java -jar /app/contas-pagar-api.jar"]
+
+volumes:
+  postgres_data:
+    driver: local
