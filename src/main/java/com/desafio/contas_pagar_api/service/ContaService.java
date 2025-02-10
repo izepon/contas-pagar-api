@@ -6,6 +6,8 @@ import com.desafio.contas_pagar_api.repository.ContaRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,8 +52,8 @@ public class ContaService {
         throw new RuntimeException("Conta não encontrada para alteração de situação");
     }
 
-    public List<Conta> obterContas(LocalDate startDate, LocalDate endDate, String descricao) {
-        return contaRepository.findByDataVencimentoBetweenAndDescricaoContaining(startDate, endDate, descricao);
+    public Page<Conta> obterContas(LocalDate startDate, LocalDate endDate, String descricao, Pageable pageable) {
+        return contaRepository.findByDataBetweenAndDescricaoContaining(startDate, endDate, descricao, pageable);
     }
 
     public Conta obterContaPorId(Long id) {

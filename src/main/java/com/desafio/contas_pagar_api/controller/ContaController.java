@@ -4,6 +4,8 @@ import com.desafio.contas_pagar_api.model.Conta;
 import com.desafio.contas_pagar_api.model.SituacaoConta;
 import com.desafio.contas_pagar_api.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,11 +48,12 @@ public class ContaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Conta>> obterContas(
+    public ResponseEntity<Page<Conta>> obterContas(
             @RequestParam LocalDate startDate,
             @RequestParam LocalDate endDate,
-            @RequestParam String descricao) {
-        List<Conta> contas = contaService.obterContas(startDate, endDate, descricao);
+            @RequestParam String descricao,
+            Pageable pageable) {
+        Page<Conta> contas = contaService.obterContas(startDate, endDate, descricao, pageable);
         return ResponseEntity.ok(contas);
     }
 
