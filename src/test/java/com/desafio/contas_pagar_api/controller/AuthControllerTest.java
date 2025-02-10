@@ -47,16 +47,25 @@ class AuthControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        instanciaUsuario();
+        instanciaRegisterRequest();
+        instanciaAuthRequest();
+    }
 
+    private void instanciaUsuario() {
         user = new User();
         user.setId(USER_ID);
         user.setUsername(USERNAME);
         user.setPassword(PASSWORD);
+    }
 
+    private void instanciaRegisterRequest() {
         registerRequest = new RegisterRequest();
         registerRequest.setUsername(USERNAME);
         registerRequest.setPassword(PASSWORD);
+    }
 
+    private void instanciaAuthRequest() {
         authRequest = new AuthRequest();
         authRequest.setUsername(USERNAME);
         authRequest.setPassword(PASSWORD);
