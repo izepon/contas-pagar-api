@@ -3,6 +3,8 @@ package com.desafio.contas_pagar_api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,8 +33,9 @@ public class Conta {
     @Column(nullable = false)
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String situacao;
+    private SituacaoConta situacao;
 
     public Long getId() {
         return id;
@@ -74,11 +77,11 @@ public class Conta {
         this.descricao = descricao;
     }
 
-    public String getSituacao() {
+    public SituacaoConta getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(String situacao) {
+    public void setSituacao(SituacaoConta situacao) {
         this.situacao = situacao;
     }
 }
