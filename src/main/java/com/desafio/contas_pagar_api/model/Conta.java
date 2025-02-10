@@ -1,6 +1,5 @@
 package com.desafio.contas_pagar_api.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -85,4 +84,3 @@ public class Conta {
         this.situacao = situacao;
     }
 }
-

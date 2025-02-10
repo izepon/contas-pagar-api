@@ -17,4 +17,6 @@ spring:
     validate-on-migrate: false
     locations: classpath:db/migration
   jwt:
-    secret: bceea549fde67b0d92ece723b78241d6db16bc3e09620440e76be0fdeb3409cb
+    secret: OlgB28YtZ9A7bKf8E7TbDNkOU1w2+q8XMZ+7FZrFOkM=
+    expirationMs: 900000
+
