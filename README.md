@@ -44,12 +44,11 @@ docker-compose up --build
 O Docker Compose fará o seguinte:
 - Criará um container para o banco de dados PostgreSQL.
 - Criará um container para a aplicação Spring Boot.
-
-
-- Exporá a aplicação na porta 8081.
+- Aplicação estará na porta 8081.
 
 ### **3. Acessando a API**
 Após a execução dos containers, a API estará acessível em http://localhost:8081. Você pode usar o Postman para testar os endpoints da API.
+[Baixar Contas Pagar Apis.postman_collection.json](https://github.com/user-attachments/files/18742433/Contas.Pagar.Apis.postman_collection.json)
 
 ### **4. Parar os Containers**
 Quando terminar de testar ou utilizar a aplicação, pode parar os containers com o seguinte comando:
@@ -60,6 +59,3 @@ docker-compose down
 
 ### **5 - Configuração do Banco de Dados**
 O banco de dados PostgreSQL é configurado automaticamente via Docker Compose. 
-
-### **6 - Import a Collection Postman para testes**
-[Baixar Contas Pagar Apis.postman_collection.json](https://github.com/user-attachments/files/18742433/Contas.Pagar.Apis.postman_collection.json)
