@@ -53,7 +53,7 @@ public class ContaService {
     }
 
     public Page<Conta> obterContas(LocalDate startDate, LocalDate endDate, String descricao, Pageable pageable) {
-        return contaRepository.findByDataBetweenAndDescricaoContaining(startDate, endDate, descricao, pageable);
+        return contaRepository.findByDataVencimentoBetweenAndDescricaoContaining(startDate, endDate, descricao, pageable);
     }
 
     public Conta obterContaPorId(Long id) {

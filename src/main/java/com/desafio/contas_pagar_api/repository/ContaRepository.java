@@ -21,5 +21,5 @@ public interface ContaRepository extends JpaRepository<Conta, Long> {
     @Query("SELECT SUM(c.valor) FROM Conta c WHERE c.dataPagamento BETWEEN :startDate AND :endDate")
     BigDecimal sumByDataPagamentoBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
-    Page<Conta> findByDataBetweenAndDescricaoContaining(LocalDate startDate, LocalDate endDate, String descricao, Pageable pageable);
+    Page<Conta> findByDataVencimentoBetweenAndDescricaoContaining(LocalDate startDate, LocalDate endDate, String descricao, Pageable pageable);
 }
